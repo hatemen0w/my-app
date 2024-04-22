@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Header from "./components/Header/Header";
+import Graph3D from "./components/Graph3D/Graph3D";
+import Graph2D from "./components/Graph2D/Graph2D";
+import Calc from "./components/Calc/Calc";
 
-function App() {
+const App = () => {
+  const [pageName, setPageName] = useState('Graph3D');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Header setPageName={setPageName} />
+      {pageName === 'Graph3D' ? <Graph3D /> : null}
+      {pageName === 'Graph2D' ? <Graph2D /> : null}
+      {pageName === 'Calc' ? <Calc /> : null}
     </div>
   );
-}
+};
 
 export default App;
